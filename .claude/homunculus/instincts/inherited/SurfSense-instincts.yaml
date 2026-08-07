@@ -1,0 +1,571 @@
+# Instincts generated from https://github.com/cubxxw/SurfSense
+# Generated: 2026-06-01T04:56:54.806Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: SurfSense-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, refactor, fix, docs
+
+## Evidence
+
+- 100 commits analyzed
+- Detected conventional commit pattern
+- Examples: refactor: replace ContextMenu with DropdownMenu in SearchSpaceAvatar for improved mobile and desktop interactions, chore: add OpenTelemetry dependencies and update lock file
+
+---
+id: SurfSense-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Commit Length
+
+## Action
+
+Write moderate-length commit messages (~73 characters)
+
+## Evidence
+
+- Average commit message length: 73 chars
+- Based on 100 commits
+
+---
+id: SurfSense-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Naming Files
+
+## Action
+
+Use snake_case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: snake_case
+
+---
+id: SurfSense-import-alias
+trigger: "when importing modules"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Import Alias
+
+## Action
+
+Use path aliases (@/, ~/) instead of relative imports
+
+## Evidence
+
+- Import analysis shows alias pattern
+- Example: import { x } from '@/lib/x'
+
+---
+id: SurfSense-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: SurfSense-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: SurfSense-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~15x per month
+- Files: surfsense_web/app/dashboard/[search_space_id]/team/*, surfsense_web/atoms/members/*, surfsense_web/components/settings/*
+
+---
+id: SurfSense-workflow-extract-shared-helper-or-contract
+trigger: "when doing extract shared helper or contract"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Extract Shared Helper Or Contract
+
+## Action
+
+Follow the extract-shared-helper-or-contract workflow:
+1. Identify duplicated logic or contract (e.g., permission checks, cookie payload types).
+2. Extract logic/type into a new shared file (e.g., atoms, types, or lib/).
+3. Update all consumers to use the new shared helper/type.
+4. Remove old, duplicated implementations.
+5. Fix any orphaned or leftover code from the extraction.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: surfsense_web/atoms/**, surfsense_web/contracts/types/**, surfsense_web/lib/**
+
+---
+id: SurfSense-workflow-observability-feature-integration
+trigger: "when doing observability feature integration"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Observability Feature Integration
+
+## Action
+
+Follow the observability-feature-integration workflow:
+1. Add or update observability-related config (e.g., docker-compose, .env, otel-collector).
+2. Implement new metrics, tracing, or telemetry helpers in observability modules.
+3. Instrument backend services, pipelines, or middleware to emit telemetry.
+4. Add or update unit tests for observability features.
+5. Update or add documentation for observability.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: docker/docker-compose*.yml, docker/otel-collector/config.yaml, surfsense_backend/.env.example
+
+---
+id: SurfSense-workflow-ui-component-refactor-or-consolidation
+trigger: "when doing ui component refactor or consolidation"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Ui Component Refactor Or Consolidation
+
+## Action
+
+Follow the ui-component-refactor-or-consolidation workflow:
+1. Identify component or event pattern to refactor (e.g., replace ContextMenu with DropdownMenu, replace TooltipIconButton with Button, migrate window event to atom).
+2. Update component implementation and usages.
+3. Update or remove related helper logic.
+4. Test for UI/UX consistency.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: surfsense_web/components/**, surfsense_web/app/**, surfsense_web/lib/**
+
+---
+id: SurfSense-workflow-dependency-or-config-update-with-feature
+trigger: "when doing dependency or config update with feature"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Dependency Or Config Update With Feature
+
+## Action
+
+Follow the dependency-or-config-update-with-feature workflow:
+1. Update dependency files (e.g., pyproject.toml, uv.lock, package.json).
+2. Update or add related configuration files (.env.example, docker-compose).
+3. Implement or update feature code.
+4. Test integration.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: surfsense_backend/pyproject.toml, surfsense_backend/uv.lock, surfsense_backend/.env.example
+
+---
+id: SurfSense-workflow-merge-mainline-or-feature-branch
+trigger: "when doing merge mainline or feature branch"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/cubxxw/SurfSense
+---
+
+# SurfSense Workflow Merge Mainline Or Feature Branch
+
+## Action
+
+Follow the merge-mainline-or-feature-branch workflow:
+1. Fetch and merge upstream/mainline branch.
+2. Resolve merge conflicts if any.
+3. Update multiple files across backend and frontend.
+4. Test and verify integration.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: surfsense_backend/**, surfsense_web/**, surfsense_desktop/**
+
+---
+id: surfsense-naming-files-snake-case
+trigger: "When creating or renaming a file in the codebase."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Naming Files Snake Case
+
+## Action
+
+Use snake_case for file names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files: snake_case
+
+---
+id: surfsense-naming-functions-camelCase
+trigger: "When defining a new function."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Naming Functions CamelCase
+
+## Action
+
+Use camelCase for function names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions: camelCase
+
+---
+id: surfsense-naming-classes-pascal-case
+trigger: "When defining a new class."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Naming Classes Pascal Case
+
+## Action
+
+Use PascalCase for class names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes: PascalCase
+
+---
+id: surfsense-naming-constants-screaming-snake-case
+trigger: "When defining a constant."
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Naming Constants Screaming Snake Case
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names.
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: surfsense-import-style-alias
+trigger: "When importing modules."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Import Style Alias
+
+## Action
+
+Use alias import style.
+
+## Evidence
+
+- Pattern in codeStyle.importStyle: alias
+
+---
+id: surfsense-export-style-named
+trigger: "When exporting modules or functions."
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Export Style Named
+
+## Action
+
+Use named exports.
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle: named
+
+---
+id: surfsense-testing-file-pattern
+trigger: "When creating a new test file."
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Testing File Pattern
+
+## Action
+
+Name the file with the pattern *.test.ts.
+
+## Evidence
+
+- Pattern in testing.filePattern: *.test.ts
+
+---
+id: surfsense-testing-unit-tests
+trigger: "When writing tests."
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Testing Unit Tests
+
+## Action
+
+Write unit tests for new features or modules.
+
+## Evidence
+
+- Pattern in testing.testTypes: unit
+- Example in workflow: Add tests for feature
+
+---
+id: surfsense-commit-conventional-format
+trigger: "When making a commit."
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Commit Conventional Format
+
+## Action
+
+Use a conventional commit prefix (feat, refactor, fix, docs, chore, test) followed by a colon and a concise message.
+
+## Evidence
+
+- Pattern in commits.prefixes: feat, refactor, fix, docs
+- Examples: 'feat(observability): add OpenTelemetry process bootstrap', 'fix: move getConnectorTelemetryMeta...'
+
+---
+id: surfsense-commit-merge-mainline
+trigger: "When merging mainline or upstream into a feature branch."
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Commit Merge Mainline
+
+## Action
+
+Use 'Merge' in the commit message and update files across backend and frontend as needed.
+
+## Evidence
+
+- Example: 'Merge remote-tracking branch 'upstream/dev' into feat/opentelemetry'
+- Pattern in workflow: merge-mainline-or-feature-branch
+
+---
+id: surfsense-extract-shared-helper-or-contract
+trigger: "When logic or contract is duplicated across multiple files."
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Extract Shared Helper Or Contract
+
+## Action
+
+Extract the logic/type into a shared file and update all consumers to use the new shared code.
+
+## Evidence
+
+- Workflow: extract-shared-helper-or-contract
+- Example commit sequence: Identify duplicated logic, extract to shared, update consumers, remove old
+
+---
+id: surfsense-observability-feature-integration
+trigger: "When adding or updating observability, metrics, or telemetry features."
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Observability Feature Integration
+
+## Action
+
+Update configs, implement observability helpers, instrument services, add tests, and update docs.
+
+## Evidence
+
+- Workflow: observability-feature-integration
+- Example commit: 'feat(observability): add OpenTelemetry process bootstrap'
+
+---
+id: surfsense-ui-component-refactor
+trigger: "When improving UI maintainability or replacing component usage."
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Ui Component Refactor
+
+## Action
+
+Refactor components, update usages, and test for UI/UX consistency.
+
+## Evidence
+
+- Workflow: ui-component-refactor-or-consolidation
+- Example commit: 'refactor: replace ContextMenu with DropdownMenu in SearchSpaceAvatar...'
+
+---
+id: surfsense-dependency-or-config-update-with-feature
+trigger: "When introducing a new backend feature that requires dependency or config changes."
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Dependency Or Config Update With Feature
+
+## Action
+
+Update dependency and config files, implement feature code, and test integration.
+
+## Evidence
+
+- Workflow: dependency-or-config-update-with-feature
+- Example commit: 'chore: add OpenTelemetry dependencies and update lock file'
+
+---
+id: surfsense-merge-mainline-or-feature-branch
+trigger: "When synchronizing a feature branch with the latest mainline changes."
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: cubxxw/SurfSense
+---
+
+# Surfsense Merge Mainline Or Feature Branch
+
+## Action
+
+Fetch and merge mainline, resolve conflicts, update files, and verify integration.
+
+## Evidence
+
+- Workflow: merge-mainline-or-feature-branch
+- Example commit: 'Merge remote-tracking branch 'upstream/dev' into feat/opentelemetry'
+
