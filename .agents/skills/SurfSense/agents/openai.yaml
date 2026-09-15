@@ -1,0 +1,6 @@
+interface:
+  display_name: "SurfSense"
+  short_description: "Repo-specific patterns and workflows for SurfSense"
+  default_prompt: "Use the SurfSense repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
